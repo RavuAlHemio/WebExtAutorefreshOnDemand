@@ -13,8 +13,8 @@ function updateAlarms()
         hardRefreshMinutes: 120
       }, function (options) {
         // set up the new alarms
-        chrome.alarms.create(softAlarmName, {'periodInMinutes': options.softRefreshMinutes});
-        chrome.alarms.create(hardAlarmName, {'periodInMinutes': options.hardRefreshMinutes});
+        chrome.alarms.create(softAlarmName, {'periodInMinutes': +options.softRefreshMinutes});
+        chrome.alarms.create(hardAlarmName, {'periodInMinutes': +options.hardRefreshMinutes});
       });
     });
   });
@@ -27,6 +27,11 @@ chrome.alarms.onAlarm.addListener(function (elapsedAlarm) {
       tabs.forEach(function (tab) {
         // get the URL
         var tabUrl = tab.url;
+        if (tabUrl.substr(0, 7) != "http://" &&
+                tabUrl.substr(0, 8) != "https://") {
+            // not a fetchable URL; don't reload
+            return;
+        }
 
         // fetch the page
         var xhr = new XMLHttpRequest();
@@ -56,3 +61,4 @@ chrome.alarms.onAlarm.addListener(function (elapsedAlarm) {
     });
   }
 });
+updateAlarms();
