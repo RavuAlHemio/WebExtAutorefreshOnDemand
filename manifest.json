@@ -5,7 +5,6 @@
   "description": "Automatically refreshes pages, optionally only if they have changed.",
   "author": "Ond\u0159ej Ho\u0161ek",
   "version": "0.1",
-  "default_locale": "en",
   "icons": {
   },
   "background": {
@@ -17,8 +16,13 @@
   "incognito": "split",
   "permissions": [
     "alarms",
+    "storage",
     "tabs",
     "http://*/",
     "https://*/"
-  ]
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true
+  }
 }

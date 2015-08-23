@@ -16,7 +16,7 @@ function updateAlarms()
         chrome.alarms.create(softAlarmName, {'periodInMinutes': options.softRefreshMinutes});
         chrome.alarms.create(hardAlarmName, {'periodInMinutes': options.hardRefreshMinutes});
       });
-    }
+    });
   });
 }
 
@@ -41,7 +41,7 @@ chrome.alarms.onAlarm.addListener(function (elapsedAlarm) {
 
           // reload the tab
           chrome.tabs.reload(tab.id);
-        );
+        });
         xhr.open('get', tabUrl, true);
         xhr.send();
       });
