@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "Auto-Refresh on Demand",
+  "short_name": "Auto-Refresh",
+  "description": "Automatically refreshes pages, optionally only if they have changed.",
+  "author": "Ond\u0159ej Ho\u0161ek",
+  "version": "0.1",
+  "default_locale": "en",
+  "icons": {
+  },
+  "background": {
+    "scripts": [
+      "autorefresh.js"
+    ],
+    "persistent": false
+  },
+  "incognito": "split",
+  "permissions": [
+    "alarms",
+    "tabs",
+    "http://*/",
+    "https://*/"
+  ]
+}
